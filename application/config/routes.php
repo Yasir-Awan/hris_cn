@@ -86,6 +86,8 @@ $route['start_schedule_blocked_dates'] = 'Api/StartScheduleBlockedDates/index';
 
 $route['add_shift'] = 'Api/AddShift/index';
 
+$route['add_role'] = 'Api/AddShift/index';
+
 $route['add_leave'] = 'Api/AddLeave/index';
 
 $route['update_leave'] = 'Api/UpdateLeave/index';

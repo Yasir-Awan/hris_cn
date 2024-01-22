@@ -40,7 +40,7 @@ class Night_shift_attendance extends CI_Controller {
 				// query to fetch employee records from checkinout table
 				// $ref_id = '';
 				$allCheckinoutEmpData =	$nightAttendance->get_all_employee_records_from_checkinout($row['bio_id'],$row['schedule_start'],$row['schedule_end']);
-				// echo "<pre>"; print_r($allCheckinoutEmpData); 
+				// echo "<pre>"; print_r($allCheckinoutEmpData);
 				// $empRecords = count($allCheckinoutEmpData);
 				foreach($allCheckinoutEmpData as $key => $value){
 						if($key == 0){
@@ -52,7 +52,7 @@ class Night_shift_attendance extends CI_Controller {
 							if($prevIndexDate < $value['CheckDate']){
 								if($value['CheckTime'] < '12:00:00' && $value['CheckDate']>$row['schedule_start']){
 									$previousDay = date('Y-m-d', strtotime($value['CheckDate'] . ' -1 day'));
-									// query to fetch checkout record 
+									// query to fetch checkout record
 									$single_person_data['ref_id'] = $value['ref_id'];
 									$single_person_data['schedule_id'] = $row['id'];
 									$single_person_data['fullname'] = $row['fullname'];
@@ -111,7 +111,7 @@ class Night_shift_attendance extends CI_Controller {
 							if($prevIndexDate < $value['CheckDate']){
 								if($value['CheckTime'] < '12:00:00' && $value['CheckDate']>$row['schedule_start']){
 									$previousDay = date('Y-m-d', strtotime($value['CheckDate'] . ' -1 day'));
-									// query to fetch checkout record 
+									// query to fetch checkout record
 									$single_person_data['ref_id'] = $value['ref_id'];
 									$single_person_data['schedule_id'] = $row['id'];
 									$single_person_data['fullname'] = $row['fullname'];
@@ -154,13 +154,13 @@ class Night_shift_attendance extends CI_Controller {
 									$insertion_data[] = $single_person_data;
 								}
 							}
-						
+
 				}
 			}
 		}
 		// $uniqueRefIds = array();
 		// $finalizedArray = array();
-		
+
 		foreach ($insertion_data as $data) {
 			// echo "<pre>"; print_r($data); exit;
 

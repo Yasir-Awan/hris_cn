@@ -19,13 +19,12 @@ class Home extends CI_Controller {
 	 */
 	public function index()
 	{
-				// print_r("works");exit;
 				// $db = 'C:\Program Files\ZKTeco\att2000.mdb';
 				$db = '//172.19.10.46/ZKTeco/att2000.mdb';
 				if(!file_exists($db)){
 				echo "file not exist in the location";
 				}
-		
+
 				$con = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb, *.accdb)}; DBQ=$db; Uid=; Pwd=;");
 				//$db = new PDO("odbc:DRIVER={Microsoft Access Driver (*.mdb)}; DBQ=$dbName; Uid=; Pwd=");
 				$checkinout = $this->db->select('*')->order_by('id', 'desc')->limit(1)->get('tbl_checkinouts')->result_array();
@@ -41,10 +40,10 @@ class Home extends CI_Controller {
 					$lastRefId = $checkinout[0]['ref_id'];
 					// Set the timezone to the one you need
 					date_default_timezone_set('Asia/Karachi');
-	
+
 					// Create a new DateTime object with the date and time
 					$date_time = new DateTime($lastDate.' '.$lastTime);
-	
+
 					// Format the date and time in the desired format
 					$formatted_date_time = $date_time->format('m/d/Y h:i:s A');
 
@@ -64,26 +63,26 @@ class Home extends CI_Controller {
 				foreach($result as $key => $val) {
 					// $import_data[$key]['userid'] = $val['USERID'];
 					// $import_data[$key]['ref_id'] = $val['id'];
-		
+
 					$explodedTimeStamp = explode(" ",$val['CHECKTIME']);
 					$checkDate = $explodedTimeStamp[0];
 					$checkTime = $explodedTimeStamp[1];
 
 					$this->db->query("INSERT IGNORE INTO tbl_checkinouts (ref_id, userid, CheckDate, CheckTime) VALUES ({$val['id']}, {$val['USERID']}, '{$checkDate}', '{$checkTime}');");
-		
+
 					// $import_data[$key]['ref_id'] = $val['id'];
 					// $import_data[$key]['CheckDate'] = $checkDate;
 					// $import_data[$key]['CheckTime'] = $checkTime;
-		
+
 					// $import_data[$key]['CheckType'] = $val['CHECKTYPE'];
 					// $import_data[$key]['sensorid'] = $val['SENSORID'];
 					// $import_data[$key]['sn'] = $val['sn'];
 				}
 
 
-				// echo "<pre>"; print_r($import_data); 
+				// echo "<pre>"; print_r($import_data);
 				// exit;
-				
+
 				// $this->db->insert_batch('tbl_checkinouts', $import_data);
 
 				$con = null;

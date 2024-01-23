@@ -114,6 +114,14 @@ $route['api/(:any)']['OPTIONS'] = 'api/$1';
 
 $route['roles_list_dropdown'] = 'Api/RolesListDropdown/index';
 
+$route['toggle_write_permission'] = 'Api/Toggle/WritePermission/index';
+
+$route['toggle_edit_permission'] = 'Api/Toggle/EditPermission/index';
+
+$route['toggle_approve_permission'] = 'Api/Toggle/ApprovePermission/index';
+
+$route['toggle_delete_permission'] = 'Api/Toggle/DeletePermission/index';
+
 $route['update_employee_role'] = 'Api/UpdateEmployeeRole/index';
 $route['roles_list'] = 'Api/GetRoles/index';
 $route['delete_employee_from_pivot'] = 'Api/Pivot/DeleteEmployee/index';

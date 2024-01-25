@@ -65,6 +65,12 @@ $route['designations_list'] = 'Api/DesignationsList/index';
 
 $route['sites_list_for_schedule'] = 'Api/SitesListForSchedules/index';
 
+$route['modules_list'] = 'Api/Forms/FilterLists/GetModules/index';
+
+$route['employees_list_for_roles_form'] = 'Api/Forms/FilterLists/GetEmployees/index';
+
+$route['sites_list_for_roles_form'] = 'Api/Forms/FilterLists/GetSites/index';
+
 
 $route['shift_list'] = 'Api/GetShifts/index';
 $route['attendance_list'] = 'Api/AttendanceList/index';
@@ -88,7 +94,9 @@ $route['add_shift'] = 'Api/AddShift/index';
 
 $route['add_goal'] = 'Api/AddShift/index';
 
-$route['add_leave'] = 'Api/AddLeave/index';
+$route['add_leave'] = 'Api/Forms/AddLeave/index';
+
+$route['add_role'] = 'Api/Forms/AddRole/index';
 
 $route['update_leave'] = 'Api/UpdateLeave/index';
 

@@ -26,7 +26,7 @@ class AddRole extends REST_Controller
             if($verifiedToken){
 
                     $NewRole = new AddRoleModel;
-                    // $roleInfo = $NewRole->InsertRole($role_name,$employees,$modules,$sites);
+                    $roleInfo = $NewRole->InsertRole($role_name,$employees,$modules,$sites);
                         $resp = array('msg'=>'role inserted','status'=>'200');
                         $this->response($resp, 200);
             }

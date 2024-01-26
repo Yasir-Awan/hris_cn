@@ -58,7 +58,7 @@ class AddRoleModel extends CI_Model
 
                 // Batch insert into 'employees_roles' table
                 if (!empty($site_data)) {
-                    $this->db->insert_batch('sites_roles', $site_data);
+                    $this->db->insert_batch('roles_sites', $site_data);
                 }
         }
     }

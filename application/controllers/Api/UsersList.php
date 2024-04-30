@@ -62,9 +62,6 @@ class UsersList extends REST_Controller
             $verifiedToken = verifyToken($token);
             if($verifiedToken){
                 $user = new UsersListModel;
-                    // $user_info = $user->get_users_list();
-                    // $resp = array('user_info' => $user_info);
-                    // $this->response($resp, 200);
                     if(empty($items)){
                         $user = new UsersListModel;
                         $total_rows = $user->count_rows($table,$role,$emp_id);

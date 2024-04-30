@@ -58,7 +58,6 @@ class AttendanceList extends REST_Controller
                     $attendance = new AttendanceListModel;
                     $total_rows = $attendance->custom_filter_rows_count($table,$role,$emp_id,$customFilters);
                     $attendance_rows = $attendance->custom_filter_rows_search($limit, $start, $table,$role,$emp_id,$customFilters);
-
                     $resp = array('custom_filters'=>$customFilters['dateRange']['startDate'],'pagesize'=>$pageSize,'page'=>$page,'attendance_rows'=>$attendance_rows,'total_rows'=>$total_rows,'filters'=>$items,'in elseif'=>'in else if second wali else if');
                     $this->response($resp, 200);
                 }

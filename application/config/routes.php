@@ -74,6 +74,7 @@ $route['sites_list_for_roles_form'] = 'Api/Forms/FilterLists/GetSites/index';
 
 $route['shift_list'] = 'Api/GetShifts/index';
 $route['attendance_list'] = 'Api/AttendanceList/index';
+$route['mobile_attendance'] = 'Api/MobileAttendanceList/index';
 $route['add_user'] = 'Api/AddUser/index';
 
 $route['startdate_leavestatus'] = 'Api/LeaveStatusForStartDate/index';
@@ -110,6 +111,8 @@ $route['leaves_list'] = 'Api/LeavesList/index';
 
 $route['monthly_summary'] = 'Api/MonthlySummary/index';
 
+$route['mobile_summary'] = 'Api/MobileSummary/index';
+
 $route['site_employees/(:any)'] = 'Api/SiteEmployees/index/$1';
 
 $route['site_roles/(:any)'] = 'Api/SiteRoles/index/$1';
@@ -136,6 +139,13 @@ $route['delete_employee_from_pivot'] = 'Api/Pivot/DeleteEmployee/index';
 $route['delete_module_from_pivot'] = 'Api/Pivot/DeleteModule/index';
 $route['delete_site_from_pivot'] = 'Api/Pivot/DeleteSite/index';
 
+$route['leave_detail'] = 'Api/LeaveDetails/index';
+
+$route['schedule_detail'] = 'Api/ScheduleDetails/index';
+
+$route['attendance_detail'] = 'Api/AttendanceDetails/index';
+
+$route['summary_detail'] = 'Api/SummaryDetails/index';
 
 // $route['mobileApi/filtered_site_inventory/(:any)/(:any)'] = 'mobileApi/MobileApiFilteredSiteInventoryController/index/$1/$2';
 

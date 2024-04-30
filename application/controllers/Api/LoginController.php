@@ -15,7 +15,7 @@ class LoginController extends REST_Controller
         $JwtSecretKey = "Mysecretwordshere";
         $userName = $this->post('username');
 
-        $this->response($userName, 200);
+        // $this->response($userName, 200);
 
         $password = sha1($this->post('password'));
         $loginModel = new LoginModel;
@@ -67,7 +67,8 @@ class LoginController extends REST_Controller
                     'edit_permission'=>$permissions[0]['edit_permission'],
                     'approval_permission'=>$permissions[0]['approval_permission'],
                     'delete_permission'=>$permissions[0]['delete_permission'],
-                    'access_token' => $token
+                    'access_token' => $token,
+                    "success"=>"true"
                 );
                 // Set CORS headers
 

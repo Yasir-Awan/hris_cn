@@ -147,5 +147,7 @@ $route['attendance_detail'] = 'Api/AttendanceDetails/index';
 
 $route['summary_detail'] = 'Api/SummaryDetails/index';
 
+$route['report_list'] = 'Api/Reporting/ReportList/index';
+
 // $route['mobileApi/filtered_site_inventory/(:any)/(:any)'] = 'mobileApi/MobileApiFilteredSiteInventoryController/index/$1/$2';
 

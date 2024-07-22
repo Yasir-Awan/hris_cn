@@ -10,7 +10,6 @@ class LoginController extends REST_Controller
     }
     public function index_post()
     {
-        // echo "yaisr "; exit;
         $jwt = new JWT();
         $JwtSecretKey = "Mysecretwordshere";
         $userName = $this->post('username');
@@ -20,8 +19,6 @@ class LoginController extends REST_Controller
         $password = sha1($this->post('password'));
         $loginModel = new LoginModel;
         $user_info = $loginModel->get_detail($userName, $password);
-
-        // $this->response($user_info, 200);
 
         try {
             if($user_info!= "User Not Found!"){
@@ -76,8 +73,8 @@ class LoginController extends REST_Controller
             }
         }
         catch(Exception $e){
-            $error = array("status"=>401,
-            "message"=>"Invalid Credentials",
+            $error = array("status"=>'gulam jazz',
+            "message"=>$e,
             "success"=>"false"
         );
             $this->response($error);

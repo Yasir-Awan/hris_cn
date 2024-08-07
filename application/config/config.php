@@ -30,7 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 #$config['base_url'] = $protocol . $_SERVER['HTTP_HOST'] . "/hris/";
 
-$config['base_url'] = 'http://' . $_SERVER['HTTP_HOST'] . '/hris/';
+$config['base_url'] = 'https://' . $_SERVER['HTTP_HOST'] . '/hris/';
 
 /*
 |--------------------------------------------------------------------------

@@ -13,8 +13,11 @@ class ReportList extends REST_Controller
         $page = $this->post('page');
         $customFilters = $this->post('customFilter');
         // echo "<pre>"; print_r($customFilters);
-        // $this->response($customFilters, 200);
+        // $this->response($customFilters->employees, 200);
         // $filters = $this->post('filters');
+
+        // Access the 'employees' array within the 'customFilter' object
+        $employees = isset($customFilters['employees']) ? $customFilters['employees'] : [];
         $role = $this->post('role');
         if($role == 4)
         $emp_id = $this->post('emp_id');
@@ -58,9 +61,9 @@ class ReportList extends REST_Controller
                 }
                 elseif(!empty($customFilters['filterType']) ){
                     $attendance = new ReportListModel;
-                    $total_rows = $attendance->custom_filter_rows_count($table,$role,$emp_id,$customFilters);
-                    $attendance_rows = $attendance->custom_filter_rows_search($limit, $start, $table,$role,$emp_id,$customFilters);
-                    $resp = array('custom_filters'=>$customFilters['dateRange']['startDate'],'pagesize'=>$pageSize,'page'=>$page,'attendance_rows'=>$attendance_rows,'total_rows'=>$total_rows,'in elseif'=>'in else if second wali else if');
+                    $total_rows = $attendance->custom_filter_rows_count($table,$role,$emp_id,$employees,$customFilters);
+                    $attendance_rows = $attendance->custom_filter_rows_search($limit, $start, $table,$role,$emp_id,$employees,$customFilters);
+                    $resp = array('custom_filters'=>$customFilters['dateRange']['startDate'],'employees'=>$employees,'pagesize'=>$pageSize,'page'=>$page,'attendance_rows'=>$attendance_rows,'total_rows'=>$total_rows,'in elseif'=>'in else if second wali else if');
                     $this->response($resp, 200);
                 }
                 elseif(!empty($items[0]->value) && empty($customFilters['filterType'])){

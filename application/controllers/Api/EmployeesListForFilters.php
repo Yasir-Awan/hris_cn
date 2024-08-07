@@ -11,46 +11,7 @@ class EmployeesListForFilters extends REST_Controller
     public function index_post()
     {
         $users = $this->post('employees');
-        // $page = $this->post('page');
-        // $pageSize = $this->post('pageSize');
-        // $limit = $pageSize;
-        // if($page==0){
-        //     $start = $page;
-        // }else{
-        //     $start = ($pageSize * $page)-$pageSize;
-        // }
-        // $filters = $this->post('filters');
-        // $role = $this->post('role');
-        // $emp_id = $this->post('emp_id');
-        // $json = json_encode($filters);
 
-        // //Assuming the response is stored in a variable called $response
-        // $data = json_decode($json);
-        // $items = $data->items;
-        // // $this->response($filters, 200);
-
-        // $table = 'vw_userlist';
-		// $columns = array(
-		// 	0 => 'id',
-		// 	1 => 'fullname',
-		// 	2 => 'email',
-        //     3 => 'bio_ref_id',
-        //     4 => 'site',
-        //     5 => 'site_name',
-        //     6 => 'contact',
-        //     7 => 'address',
-        //     8 => 'employee_type',
-        //     9 => 'type_of_employee',
-        //     10 => 'consultant',
-        //     11 => 'section',
-        //     12 => 'section_name',
-        //     13 => 'field',
-        //     14 => 'field_name',
-        //     15 => 'role',
-        //     16 => 'role_name',
-        //     17 => 'employee_team',
-        //     18 => 'status'
-		// );
         $headers = apache_request_headers();
         $head = explode(" ", $headers['Authorization']);
         $token = $head[1];

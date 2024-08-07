@@ -79,7 +79,7 @@ class ReportListModel extends CI_Model
     }
   }
 
-  function custom_filter_rows_count($table,$role,$emp_id,$customFilters)
+  function custom_filter_rows_count($table,$role,$emp_id,$employees,$customFilters)
   {
       if(isset($customFilters['filterType']) && $customFilters['filterType'] == 1){
         $this->db->where_in('bio_id', $emp_id);
@@ -90,7 +90,9 @@ class ReportListModel extends CI_Model
         return $query->num_rows();
       }
       if(isset($customFilters['filterType']) && $customFilters['filterType'] == 2){
-        $this->db->where('attendance_date', $customFilters['day']);
+        $this->db->where_in('bio_id', $employees);
+        $this->db->where('attendance_date>=', $customFilters['dateRange']['startDate']);
+        $this->db->where('attendance_date<=', $customFilters['dateRange']['endDate']);
         $query = $this->db->get($table);
         return $query->num_rows();
       }
@@ -106,7 +108,7 @@ class ReportListModel extends CI_Model
       }
   }
 
-  function custom_filter_rows_search($limit, $start, $table,$role,$emp_id,$customFilters)
+  function custom_filter_rows_search($limit, $start, $table,$role,$emp_id,$employees,$customFilters)
   {
     if($role == 4){
       if(isset($customFilters['filterType']) && $customFilters['filterType'] == 1){
@@ -152,10 +154,22 @@ class ReportListModel extends CI_Model
         }
       }
       if(isset($customFilters['filterType']) && $customFilters['filterType'] == 2){
-        $this->db->where_in('bio_id', $emp_id);
-        $this->db->where('attendance_date', $customFilters['day']);
-        $this->db->limit($limit, $start);
-        $this->db->order_by('checkout', 'desc');
+        // $this->db->where_in('bio_id', $emp_id);
+        // $this->db->where('attendance_date', $customFilters['day']);
+        // $this->db->limit($limit, $start);
+        // $this->db->order_by('checkout', 'desc');
+        // $query =   $this->db->get($table);
+        // if ($query->num_rows() > 0) {
+        //   return $query->result();
+        // } else {
+        //   return null;
+        // }
+        $this->db->where_in('bio_id', $employees);
+        $this->db->where('attendance_date>=', $customFilters['dateRange']['startDate']);
+        $this->db->where('attendance_date<=', $customFilters['dateRange']['endDate']);
+        // $this->db->where('site', $customFilters['site']);
+        // $this->db->limit($limit, $start);
+        $this->db->order_by('attendance_date', 'asc');
         $query =   $this->db->get($table);
         if ($query->num_rows() > 0) {
           return $query->result();

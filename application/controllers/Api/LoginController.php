@@ -16,9 +16,9 @@ class LoginController extends REST_Controller
 
         // $this->response($userName, 200);
 
-        $password = sha1($this->post('password'));
+        // $password = sha1($this->post('password'));
         $loginModel = new LoginModel;
-        $user_info = $loginModel->get_detail($userName, $password);
+        $user_info = $loginModel->get_detail($userName);
 
         try {
             if($user_info!= "User Not Found!"){

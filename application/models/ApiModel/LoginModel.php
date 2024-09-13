@@ -2,10 +2,10 @@
 defined('BASEPATH') or exit('No direct script access allowed');
 class LoginModel extends CI_Model
 {
-    public function get_detail($userName, $password)
+    public function get_detail($userName)
     {
         $db2 = $this->load->database('database2', TRUE);
-        $query = $db2->get_where('users', array('username' => $userName, 'password' => $password));
+        $query = $db2->get_where('users', array('username' => $userName));
 
         if($query->num_rows()>0){
             return $query->result_array();
@@ -32,6 +32,7 @@ class LoginModel extends CI_Model
 
         if($query->num_rows()>0){
             $lines = $query->result_array();
+            // echo "<pre>"; print_r($lines); exit;
             $moduleMapping = [];
             foreach ($lines as $row) {
                     $moduleMapping[$row['module_id']] = $row['module_name'];
@@ -40,7 +41,7 @@ class LoginModel extends CI_Model
             // Convert to the desired formats
             $tabNameToIndex = $moduleMapping; // {"1": "schedules", "2": "leaves", ...}
             $indexToTabName = array_flip($moduleMapping);
-            return array('tabNameToIndex'=>$tabNameToIndex,'indexToTabName'=>$indexToTabName); 
+            return array('tabNameToIndex'=>$tabNameToIndex,'indexToTabName'=>$indexToTabName);
         }else{ return 'no records found'; }
     }
 

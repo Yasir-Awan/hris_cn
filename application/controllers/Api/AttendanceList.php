@@ -51,7 +51,7 @@ class AttendanceList extends REST_Controller
                     $attendance = new AttendanceListModel;
                     $total_rows = $attendance->count_assets($table,$role,$emp_id);
                     $attendance_rows = $attendance->asset_allposts($limit, $start, $table,$role,$emp_id);
-                    $resp = array('custom_filters'=>$customFilters['filterType'],'pagesize'=>$pageSize,'page'=>$page,'attendance_rows'=>$attendance_rows,'total_rows'=>$total_rows,'filters'=>$items,'in elseif'=>'in else if sab se pehli elseif');
+                    $resp = array('pagesize'=>$pageSize,'page'=>$page,'attendance_rows'=>$attendance_rows,'total_rows'=>$total_rows,'filters'=>$items,'in elseif'=>'in else if sab se pehli elseif');
                     $this->response($resp, 200);
                 }
                 elseif(!empty($customFilters['filterType']) && empty($items[0]->value)){
